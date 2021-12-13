@@ -1,0 +1,33 @@
+<div class="col-12 mt-2">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-8">
+                    {{activity.name}} > {{activity.phase}}
+                </div>
+                <div class="col-4 d-flex justify-content-end">
+                    <b>{{activity.get_type_name}}</b>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <p class="card-text text-wrap">{{activity.description}}</p>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-end">
+                    <div class="p-1">
+                        <a href="" class="btn btn-success"><i class="fas fa-check-circle"></i></a>
+                    </div>
+                    <div class="p-1">
+                        <a href="" class="btn btn-success" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom"><i class="fas fa-file-pdf"></i></a>
+                    </div>
+                    <div class="p-1">
+                        <a href="" class="btn btn-success"><i class="fas fa-calendar-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            {{activity.updated}}
+        </div>
+    </div>
+</div>

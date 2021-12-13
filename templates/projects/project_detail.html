@@ -1,0 +1,81 @@
+{% extends "header.html" %}
+
+{% block content %} 
+
+<style>
+
+.phase-group > .row {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.phase-group > .row > .col-5 {
+    display: inline-block;
+}
+
+</style>
+<div class="container mt-3 phase-group">
+    <div class="row">
+        <div class="col-12 d-flex align-items-center justify-content-between ">
+            <h1>Projeto: {{project.project.name}}</h1>
+            <a href="{{ project.project.get_create_phase_url}}" class="btn btn-success btn-lg"><i class="fas fa-plus-square"></i></a>
+        </div>
+    </div>
+    <hr>
+    <div class="row ml-1">
+        {% for phase in project.project.get_phases %}
+        <div class="col-5">
+            <div class="card">
+                <div class="card-header d-flex justify-content-center">
+                    <h5 class="card-title">{{phase.name}} | {{phase.get_current_budget}}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 text-wrap">
+                            <p class="card-text">{{phase.description | safe | linebreaks}}</p>
+                            <p class="card-text">Orçamento inicial: {{phase.initial_budget}}</p>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12 d-flex justify-content-center">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="card mt-2">
+                        <div class="card-header">
+                            <div class="row d-flex justify-content-end">
+
+                                <div class="col-11 d-flex justify-content-center align-items-end">
+                                    <h5 class="card-title">Atividades</h5>
+                                </div>
+                                <div class="col-1 d-flex justify-content-end">
+                                    <a href="{{ phase.get_create_activity_url}}" class="btn btn-success "><i class="fas fa-plus-square"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    {% for activity in phase.get_activities %}
+                                        {% include "activity/activity_card.html" %}
+                                    {%endfor%}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-center">
+                    <p class="card-text h6">{{phase.start_date}} -> {{phase.end_date}}</p>
+                </div>
+            </div>
+            
+        </div>
+        {% endfor %}
+    </div>
+    {% include "activity/activity_modal.html" %}
+    
+</div>
+
+{% endblock %}
+

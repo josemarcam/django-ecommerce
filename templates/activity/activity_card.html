@@ -1,0 +1,17 @@
+{% block content %} 
+
+<div class="col-12 mt-2 activity" data-popup-url="{{ activity.get_activity_detail_url }}">
+    <div class="card">
+        <div class="card-header">
+            ({{activity.creator}}) {{activity.name}}
+        </div>
+        <div class="card-body">
+            <p class="card-text text-wrap">{{activity.short_description}}</p>
+        </div>
+        <div class="card-footer">
+            {{activity.created}}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

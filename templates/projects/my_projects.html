@@ -1,0 +1,38 @@
+{% extends "header.html" %}
+
+{% block content %} 
+
+<div class="container mt-3">
+    <h1>
+        Meus Projetos
+    </h1>
+    <hr>
+    <div class="row">
+        {% for project in projects %}
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Projeto: {{project.project.name}}</h5>
+                    </div>
+                    <div class="card-body">
+                    <p class="card-text h4">Descrição</p>
+                    <p class="card-text h4">{{project.project.description | safe | linebreaks}}</p>
+                    <hr>
+                    <p class="card-text sm-text"> Prazo Final: {{project.project.end_date}}</p>
+                    
+                    <p class="card-text">Fase atual: {{project.project.get_current_phase.name}}</p>
+
+                    <a href="{{project.project.get_absolute_url}}" class="btn btn-primary">Detalhes</a>
+                    </div>
+                    <div class="card-footer">
+                        <p class="card-text">Orçamento inicial: {{project.project.initial_budget}}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    
+</div>
+
+{% endblock %}
+

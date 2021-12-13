@@ -1,0 +1,26 @@
+{% block content %} 
+
+<script>
+    $(document).on("click", ".activity", function (e) {
+      e.preventDefault();
+      var $popup = $("#popup");
+      var popup_url = $(this).data("popup-url");
+      $(".modal-body", $popup).load(popup_url, function () {
+        $popup.modal("show");
+      });
+    });
+  </script>
+
+<div id="popup" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal">Fechar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
